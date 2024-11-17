@@ -6,7 +6,9 @@ const map = new ol.Map({
     }),
   ],
   view: new ol.View({
-    center: [0,0],
-    zoom: 2,
+    center: new ol.proj.fromLonLat([-77.026211,-11.883041]),
+    zoom: 18,
   }),
 });
+
+console.log(map.getView().getProjection());
