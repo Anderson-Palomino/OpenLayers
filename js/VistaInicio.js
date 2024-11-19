@@ -1,4 +1,8 @@
 const map = new ol.Map({
+  controls: ol.control.defaults.defaults({
+    zoom: true,
+    zoomOptions: { zoomInTipLabel: "Acercar", zoomOutTipLabel: "Alejar" },
+  }),
   target: "map",
   layers: [
     new ol.layer.Tile({
@@ -13,9 +17,4 @@ const map = new ol.Map({
 
 console.log(map.getView().getProjection());
 
-map.addControl(
-  new ol.control.FullScreen({
-    className: "proy-ol-full-screen",
-    tipLabel: "Pantalla Completa",
-  })
-);
+

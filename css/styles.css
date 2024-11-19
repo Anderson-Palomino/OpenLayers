@@ -27,6 +27,11 @@ body {
     top: 4.5em
   }
 
+  .proy-ol-zoom-extent{
+    left: 0.5em;
+    top: 5.943em;
+  }
+
   /* Title */
   h1 {
     color: #343a40; /* Color oscuro para contraste */
