@@ -6,7 +6,12 @@ const map = new ol.Map({
   target: "map",
   layers: [
     new ol.layer.Tile({
-      source: new ol.source.OSM(),
+      // source: new ol.source.OSM(),
+      source: new ol.source.XYZ({
+        url:"http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
+        attributions:"Google Inc.",
+        attributionsCollapsible: false
+      })
     }),
   ],
   view: new ol.View({
