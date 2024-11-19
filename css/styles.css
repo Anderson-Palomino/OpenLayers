@@ -12,7 +12,14 @@ body {
   background-color: #e9ecef; /* Fondo gris claro para cargar mejor */
   border: 2px solid #dee2e6; /* Borde gris claro */
 }
-
+.proy-ol-full-screen{
+  left: 0.5em;
+  top: 4.5em;
+}
+.proy-ol-zoom-extent{
+  top: 5.943em;
+  left: 0.5em;
+}
 /* Posición del mouse */
 #mouseposition {
   font-size: 1.1rem; /* Tamaño de texto cómodo */

@@ -13,12 +13,12 @@ const map = new ol.Map({
         attributionsCollapsible: false,
       }),
     }),
-    // new ol.layer.Vector({
-    //   source: new ol.source.Vector({
-    //     url:"data/countries.json",
-    //     format: new ol.format.GeoJSON()
-    //   })
-    // })
+    new ol.layer.Vector({
+      source: new ol.source.Vector({
+        url:"data/features.json",
+        format: new ol.format.GeoJSON()
+      })
+    })
   ],
   view: new ol.View({
     center: new ol.proj.fromLonLat([-77.026211, -11.883041]),

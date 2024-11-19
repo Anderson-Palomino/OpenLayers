@@ -12,19 +12,28 @@
 </head>
 
 <body>
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">OpenLayers App</a>
+    </div>
+  </nav>
+
   <div class="container my-5">
     <h1 class="text-center mb-4">OpenLayers Mapas</h1>
+
     <!-- Mapa -->
     <div id="map" class="border rounded shadow mb-4"></div>
 
     <!-- Posición del mouse -->
-    <div id="mouseposition" class="alert alert-secondary text-center" role="alert"></div>
-
-    
+    <div id="mouseposition" class="alert alert-secondary text-center" role="alert">
+      Mueve el cursor sobre el mapa para ver la posición.
+    </div>
 
     <!-- Herramientas -->
-    <div id="tools" class="d-flex justify-content-center mt-3">
-      <button id="limpiar" class="btn btn-danger btn-lg">Limpiar Mapa</button>
+    <div id="tools" class="d-flex justify-content-center gap-2 mt-3">
+      <button id="limpiar" class="btn btn-danger btn-lg">Limpiar</button>
+      <a id="descargar" class="btn btn-primary btn-lg" download="features.json">Descargar</a>
     </div>
   </div>
 
