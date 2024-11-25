@@ -15,7 +15,7 @@ const map = new ol.Map({
     }),
     new ol.layer.Vector({
       source: new ol.source.Vector({
-        url:"data/features0.json",
+        url:"data/ecosistemas.geojson",
         format: new ol.format.GeoJSON()
       })
     })
