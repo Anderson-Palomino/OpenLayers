@@ -1,4 +1,3 @@
-
 const map = new ol.Map({
   controls: ol.control.defaults({
     zoom: true,
@@ -22,7 +21,7 @@ const map = new ol.Map({
     }),
     new ol.layer.Vector({
       source: new ol.source.Vector({
-        url: "data/features.json",
+        url: "data/features3.json",
         format: new ol.format.GeoJSON(),
       }),
       /*
