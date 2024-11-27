@@ -66,8 +66,8 @@ const map = new ol.Map({
     // Coordenadas centradas en Lima, Perú (convertidas con ol.proj)
     center: [-8574529.390430272, -1332463.4945135845],
     zoom: 15,
-    // minZoom: 12,
-    // maxZoom: 17,
+    minZoom: 12,
+    maxZoom: 17,
   }),
 });
 
