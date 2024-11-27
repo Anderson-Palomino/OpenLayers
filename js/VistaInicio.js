@@ -1,3 +1,5 @@
+import estilos from './Estilos.js';
+
 const map = new ol.Map({
   controls: ol.control.defaults.defaults({
     zoom: true,
@@ -18,60 +20,61 @@ const map = new ol.Map({
         url: "data/features.json",
         format: new ol.format.GeoJSON(),
       }),
-      style: new ol.style.Style({
-        stroke: new ol.style.Stroke({
-          color: "orange",
-          width: 3,
-          // lineCap: "square",
-          // lineJoin: "miter",
-          //valor, espacio, valor, espacio
-          lineDash: [15, 10, 1, 10],
-        }),
-        fill: new ol.style.Fill({
-          color: "rgba(255, 165, 0, 0.3)",
-        }),
-        // image: new ol.style.Circle({
-        //   stroke: new ol.style.Stroke({
-        //     color:"orange",
-        //     width: 3,
-        //   }),
-        //   radius: 8,
-        //   fill: new ol.style.Fill({
-        //     color: "rgba(255, 165, 0, 0.3)",
-        //   }),
-        // }),
-        // image: new ol.style.RegularShape({
-        //   points:4,
-        //   radius:8,
-        //   stroke: new ol.style.Stroke({
-        //     //colores de los puntos
-        //     color:"#218ddc",
-        //     width: 3,
-        //   }),
-        //   fill: new ol.style.Fill({
-        //     color: "rgba(255, 165, 0, 0.3)",
-        //   }),
-        //   rotation: 45,
-        // })
-        image: new ol.style.Icon({
-          src: "img/icon/arbol.png",
-          // color: "#5adc21"
-        }),
+      // style: new ol.style.Style({
+      //   stroke: new ol.style.Stroke({
+      //     color: "orange",
+      //     width: 3,
+      //     // lineCap: "square",
+      //     // lineJoin: "miter",
+      //     //valor, espacio, valor, espacio
+      //     lineDash: [15, 10, 1, 10],
+      //   }),
+      //   fill: new ol.style.Fill({
+      //     color: "rgba(255, 165, 0, 0.3)",
+      //   }),
+      //   // image: new ol.style.Circle({
+      //   //   stroke: new ol.style.Stroke({
+      //   //     color:"orange",
+      //   //     width: 3,
+      //   //   }),
+      //   //   radius: 8,
+      //   //   fill: new ol.style.Fill({
+      //   //     color: "rgba(255, 165, 0, 0.3)",
+      //   //   }),
+      //   // }),
+      //   // image: new ol.style.RegularShape({
+      //   //   points:4,
+      //   //   radius:8,
+      //   //   stroke: new ol.style.Stroke({
+      //   //     //colores de los puntos
+      //   //     color:"#218ddc",
+      //   //     width: 3,
+      //   //   }),
+      //   //   fill: new ol.style.Fill({
+      //   //     color: "rgba(255, 165, 0, 0.3)",
+      //   //   }),
+      //   //   rotation: 45,
+      //   // })
+      //   image: new ol.style.Icon({
+      //     src: "img/icon/arbol.png",
+      //     // color: "#5adc21"
+      //   }),
 
-        text: new ol.style.Text({
-          text: "Objeto",
-          offsetY:20,
-          scala:1.5,
-          stroke: new ol.style.Stroke({
-                //colores de los puntos
-                color:"#218ddc",
-                width: 4,
-              }),
-              fill: new ol.style.Fill({
-                color: "#020500",
-              }),
-        }),
-      }),
+      //   text: new ol.style.Text({
+      //     text: "Objeto",
+      //     offsetY: 20,
+      //     scala: 1.5,
+      //     stroke: new ol.style.Stroke({
+      //       //colores de los puntos
+      //       color: "#218ddc",
+      //       width: 4,
+      //     }),
+      //     fill: new ol.style.Fill({
+      //       color: "#020500",
+      //     }),
+      //   }),
+      // }),
+      style: estilos,
     }),
   ],
   view: new ol.View({
