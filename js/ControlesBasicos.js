@@ -1,3 +1,5 @@
+import { map } from './VistaInicio.js';
+
 map.addControl(
     new ol.control.FullScreen({
       className: "proy-ol-full-screen",

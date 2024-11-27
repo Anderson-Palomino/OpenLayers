@@ -1,3 +1,5 @@
+import { map } from './VistaInicio.js';
+
 const vectorSource = new ol.source.Vector();
 const vectorLayer = new ol.layer.Vector({
   source: vectorSource,

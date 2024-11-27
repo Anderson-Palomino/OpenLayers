@@ -1,5 +1,5 @@
 import estilos from './Estilos.js';
-
+export { map };
 const map = new ol.Map({
   controls: ol.control.defaults.defaults({
     zoom: true,
@@ -8,16 +8,16 @@ const map = new ol.Map({
   target: "map",
   layers: [
     new ol.layer.Tile({
-      source: new ol.source.OSM(),
-      // source: new ol.source.XYZ({
-      //   url: "http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
-      //   attributions: "Google Inc.",
-      //   attributionsCollapsible: false,
-      // }),
+      // source: new ol.source.OSM(),
+      source: new ol.source.XYZ({
+        url: "http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
+        attributions: "Google Inc.",
+        attributionsCollapsible: false,
+      }),
     }),
     new ol.layer.Vector({
       source: new ol.source.Vector({
-        url: "data/features.json",
+        url: "data/ANP.geojson",
         format: new ol.format.GeoJSON(),
       }),
       // style: new ol.style.Style({
@@ -78,9 +78,9 @@ const map = new ol.Map({
     }),
   ],
   view: new ol.View({
-    // center: new ol.proj.fromLonLat([-77.026211, -11.883041]),
-    center: [-8574529.390430272, -1332463.4945135845],
-    zoom: 15,
+    center: new ol.proj.fromLonLat([-77.026211, -11.883041]),
+    // center: [-8574529.390430272, -1332463.4945135845],
+    zoom: 5,
     // minZoom: 12,
     // maxZoom: 17,
   }),
