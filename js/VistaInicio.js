@@ -1,10 +1,13 @@
+
+import RotacionNorte from "./RotacionNorte.js";
 import estilos from './Estilos.js';
 export { map };
 const map = new ol.Map({
   controls: ol.control.defaults.defaults({
     zoom: true,
     zoomOptions: { zoomInTipLabel: "Acercar", zoomOutTipLabel: "Alejar" },
-  }),
+  }).extend([new RotacionNorte()]),
+  // controls: ol.control.defaults.defaults().extend([new RotacionNorte()]),
   target: "map",
   layers: [
     new ol.layer.Tile({
