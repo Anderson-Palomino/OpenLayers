@@ -34,6 +34,16 @@ body {
   left: 0.5em;
 }
 
+.posicion-actual {
+  top: 8.85em;
+  left: 0.5em;
+}
+
+.ol-touch .posicion-actual {
+  top: 7.4em;
+  left: 0.5em;
+}
+
 /* Posición del mouse */
 #mouseposition {
   font-size: 1.1rem; /* Tamaño de texto cómodo */

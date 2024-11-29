@@ -1,7 +1,29 @@
 
 import RotacionNorte from "./RotacionNorte.js";
 import estilos from './Estilos.js';
+
+class PosicionActual extends ol.control.Control{
+  constructor(){
+      const boton = document.createElement("button");
+      boton.innerHTML = "O";
+
+      const contenedor = document.createElement("div");
+      contenedor.className = "posicion-actual ol-control";
+      contenedor.appendChild(boton);
+
+      super({
+          element: contenedor,
+      });
+
+      boton.addEventListener("click", this.ubicar.bind(this));
+  }
+  ubicar(){
+      geolocation.setTracking(true);
+  }
+}
+
 export { map };
+
 const map = new ol.Map({
   controls: ol.control.defaults.defaults({
     zoom: true,
@@ -83,10 +105,68 @@ const map = new ol.Map({
   view: new ol.View({
     center: new ol.proj.fromLonLat([-77.026211, -11.883041]),
     // center: [-8574529.390430272, -1332463.4945135845],
-    zoom: 5,
+    zoom: 14,
     // minZoom: 12,
     // maxZoom: 17,
   }),
 });
 
-console.log(map.getView().getProjection());
+map.addControl(new PosicionActual());
+
+const posicionFeature = new ol.Feature();
+posicionFeature.setStyle(
+  new ol.style.Style({
+    image: new ol.style.Circle({
+      radius: 6,
+      fill: new ol.style.Fill({
+        color: "blue",
+      }),
+      stroke: new ol.style.Stroke({
+        color: "white",
+        width: 2,
+      }),
+    }),
+  }),
+);
+
+const exactitudFeature = new ol.Feature();
+
+const vectorLayerPosicion = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    features:[posicionFeature, exactitudFeature],
+  }),
+});
+
+map.addLayer(vectorLayerPosicion);
+
+const geolocation = new ol.Geolocation({
+  projection: map.getView().getProjection(),
+})
+
+geolocation.on("change", function(evt){
+  console.log(geolocation.getPosition());
+  zoomFeature();
+  geolocation.setTracking(false);
+});
+
+geolocation.on("error", function(evt){
+  console.log(evt.message);
+});
+
+geolocation.on("change:position", function(){
+  const coordenadas=geolocation.getPosition();
+  posicionFeature.setGeometry(new ol.geom.Point(coordenadas)); 
+});
+
+geolocation.on("change:accuracyGeometry", function(){
+  exactitudFeature.setGeometry(geolocation.getAccuracyGeometry());
+});
+
+function zoomFeature(){
+  var src = vectorLayerPosicion.getSource();
+  var ext=src.getExtent();
+  var zm=map.getView().getMaxZoom() - 8;
+
+  map.getView().fit(ext, {size: map.getSize(),duration: 750, maxZoom: zm});
+}
+// console.log(map.getView().getProjection());
