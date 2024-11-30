@@ -107,7 +107,7 @@ export type AtPixelOptions = {
      * Only layers which are visible and for which this function returns `true`
      * will be tested for features. By default, all visible layers will be tested.
      */
-    layerFilter?: undefined | ((arg0: import("./layer/Layer.js").default<import("./source/Source").default>) => boolean);
+    layerFilter?: undefined | ((arg0: import("./layer/Layer.js").default<import("./source/Source.js").default>) => boolean);
     /**
      * Hit-detection tolerance in css pixels. Pixels
      * inside the radius around the given position will be checked for features.
@@ -143,11 +143,11 @@ export type MapOptionsInternal = {
         [x: string]: any;
     };
 };
-export type MapObjectEventTypes = import("./ObjectEventType").Types | "change:layergroup" | "change:size" | "change:target" | "change:view";
+export type MapObjectEventTypes = import("./ObjectEventType.js").Types | "change:layergroup" | "change:size" | "change:target" | "change:view";
 /**
  * *
  */
-export type MapEventHandler<Return> = import("./Observable").OnSignature<import("./Observable").EventTypes, import("./events/Event.js").default, Return> & import("./Observable").OnSignature<MapObjectEventTypes, import("./Object").ObjectEvent, Return> & import("./Observable").OnSignature<import("./MapBrowserEventType").Types, MapBrowserEvent<any>, Return> & import("./Observable").OnSignature<import("./MapEventType").Types, import("./MapEvent").default, Return> & import("./Observable").OnSignature<import("./render/EventType").MapRenderEventTypes, import("./render/Event").default, Return> & import("./Observable").CombinedOnSignature<import("./Observable").EventTypes | MapObjectEventTypes | import("./MapBrowserEventType").Types | import("./MapEventType").Types | import("./render/EventType").MapRenderEventTypes, Return>;
+export type MapEventHandler<Return> = import("./Observable.js").OnSignature<import("./Observable.js").EventTypes, import("./events/Event.js").default, Return> & import("./Observable.js").OnSignature<MapObjectEventTypes, import("./Object.js").ObjectEvent, Return> & import("./Observable.js").OnSignature<import("./MapBrowserEventType.js").Types, MapBrowserEvent<any>, Return> & import("./Observable.js").OnSignature<import("./MapEventType.js").Types, import("./MapEvent.js").default, Return> & import("./Observable.js").OnSignature<import("./render/EventType.js").MapRenderEventTypes, import("./render/Event.js").default, Return> & import("./Observable.js").CombinedOnSignature<import("./Observable.js").EventTypes | MapObjectEventTypes | import("./MapBrowserEventType.js").Types | import("./MapEventType.js").Types | import("./render/EventType.js").MapRenderEventTypes, Return>;
 /**
  * Object literal with config options for the map.
  */
@@ -278,11 +278,11 @@ declare class Map extends BaseObject {
     /***
      * @type {MapEventHandler<import("./events").EventsKey>}
      */
-    on: MapEventHandler<import("./events").EventsKey>;
+    on: MapEventHandler<import("./events.js").EventsKey>;
     /***
      * @type {MapEventHandler<import("./events").EventsKey>}
      */
-    once: MapEventHandler<import("./events").EventsKey>;
+    once: MapEventHandler<import("./events.js").EventsKey>;
     /***
      * @type {MapEventHandler<void>}
      */
@@ -504,7 +504,7 @@ declare class Map extends BaseObject {
      * @template T
      * @api
      */
-    forEachFeatureAtPixel<T>(pixel: import("./pixel.js").Pixel, callback: (arg0: import("./Feature.js").FeatureLike, arg1: import("./layer/Layer.js").default<import("./source/Source").default>, arg2: import("./geom/SimpleGeometry.js").default) => T, options?: AtPixelOptions | undefined): T | undefined;
+    forEachFeatureAtPixel<T>(pixel: import("./pixel.js").Pixel, callback: (arg0: import("./Feature.js").FeatureLike, arg1: import("./layer/Layer.js").default<import("./source/Source.js").default>, arg2: import("./geom/SimpleGeometry.js").default) => T, options?: AtPixelOptions | undefined): T | undefined;
     /**
      * Get all features that intersect a pixel on the viewport.
      * @param {import("./pixel.js").Pixel} pixel Pixel.

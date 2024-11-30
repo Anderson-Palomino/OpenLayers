@@ -87,11 +87,11 @@ export type PanIntoViewOptions = {
      */
     margin?: number | undefined;
 };
-export type OverlayObjectEventTypes = import("./ObjectEventType").Types | "change:element" | "change:map" | "change:offset" | "change:position" | "change:positioning";
+export type OverlayObjectEventTypes = import("./ObjectEventType.js").Types | "change:element" | "change:map" | "change:offset" | "change:position" | "change:positioning";
 /**
  * *
  */
-export type OverlayOnSignature<Return> = import("./Observable").OnSignature<import("./Observable").EventTypes, import("./events/Event.js").default, Return> & import("./Observable").OnSignature<OverlayObjectEventTypes, import("./Object").ObjectEvent, Return> & import("./Observable").CombinedOnSignature<import("./Observable").EventTypes | OverlayObjectEventTypes, Return>;
+export type OverlayOnSignature<Return> = import("./Observable.js").OnSignature<import("./Observable.js").EventTypes, import("./events/Event.js").default, Return> & import("./Observable.js").OnSignature<OverlayObjectEventTypes, import("./Object.js").ObjectEvent, Return> & import("./Observable.js").CombinedOnSignature<import("./Observable.js").EventTypes | OverlayObjectEventTypes, Return>;
 /**
  * @typedef {import("./ObjectEventType").Types|'change:element'|'change:map'|'change:offset'|'change:position'|
  *   'change:positioning'} OverlayObjectEventTypes
@@ -131,11 +131,11 @@ declare class Overlay extends BaseObject {
     /***
      * @type {OverlayOnSignature<import("./events").EventsKey>}
      */
-    on: OverlayOnSignature<import("./events").EventsKey>;
+    on: OverlayOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {OverlayOnSignature<import("./events").EventsKey>}
      */
-    once: OverlayOnSignature<import("./events").EventsKey>;
+    once: OverlayOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {OverlayOnSignature<void>}
      */

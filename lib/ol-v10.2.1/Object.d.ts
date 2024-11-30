@@ -27,7 +27,7 @@ export default BaseObject;
 /**
  * *
  */
-export type ObjectOnSignature<Return> = import("./Observable").OnSignature<import("./Observable").EventTypes, import("./events/Event.js").default, Return> & import("./Observable").OnSignature<import("./ObjectEventType").Types, ObjectEvent, Return> & import("./Observable").CombinedOnSignature<import("./Observable").EventTypes | import("./ObjectEventType").Types, Return>;
+export type ObjectOnSignature<Return> = import("./Observable.js").OnSignature<import("./Observable.js").EventTypes, import("./events/Event.js").default, Return> & import("./Observable.js").OnSignature<import("./ObjectEventType.js").Types, ObjectEvent, Return> & import("./Observable.js").CombinedOnSignature<import("./Observable.js").EventTypes | import("./ObjectEventType.js").Types, Return>;
 import Event from './events/Event.js';
 /***
  * @template Return
@@ -88,11 +88,11 @@ declare class BaseObject extends Observable {
     /***
      * @type {ObjectOnSignature<import("./events").EventsKey>}
      */
-    on: ObjectOnSignature<import("./events").EventsKey>;
+    on: ObjectOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {ObjectOnSignature<import("./events").EventsKey>}
      */
-    once: ObjectOnSignature<import("./events").EventsKey>;
+    once: ObjectOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {ObjectOnSignature<void>}
      */

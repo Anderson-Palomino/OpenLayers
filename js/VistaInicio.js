@@ -92,7 +92,8 @@ const map = new ol.Map({
   }),
 });
 
-
+const layerSwitcher = new ol.control.LayerSwitcher();
+map.addControl(layerSwitcher);
 
 geolocation.setProjection(map.getView().getProjection());
 configurarEventos(map);

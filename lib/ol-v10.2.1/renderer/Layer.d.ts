@@ -43,7 +43,7 @@ declare class LayerRenderer<LayerType extends import("../layer/Layer.js").defaul
      * @return {Promise<Array<import("../Feature").FeatureLike>>} Promise that resolves with
      * an array of features.
      */
-    getFeatures(pixel: import("../pixel.js").Pixel): Promise<Array<import("../Feature").FeatureLike>>;
+    getFeatures(pixel: import("../pixel.js").Pixel): Promise<Array<import("../Feature.js").FeatureLike>>;
     /**
      * @param {import("../pixel.js").Pixel} pixel Pixel.
      * @return {Uint8ClampedArray|Uint8Array|Float32Array|DataView|null} Pixel data.

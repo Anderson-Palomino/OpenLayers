@@ -257,5 +257,5 @@ declare class Executor {
      */
     executeHitDetection<T>(context: CanvasRenderingContext2D, transform: import("../../transform.js").Transform, viewRotation: number, featureCallback?: FeatureCallback<T> | undefined, hitExtent?: import("../../extent.js").Extent | undefined): T | undefined;
 }
-import ZIndexContext from '../canvas/ZIndexContext.js';
+import ZIndexContext from './ZIndexContext.js';
 //# sourceMappingURL=Executor.d.ts.map

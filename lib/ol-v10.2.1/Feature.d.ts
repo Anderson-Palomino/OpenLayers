@@ -13,7 +13,7 @@ export type FeatureLike = Feature | import("./render/Feature.js").default;
 /**
  * *
  */
-export type FeatureOnSignature<Return> = import("./Observable").OnSignature<import("./Observable").EventTypes, import("./events/Event.js").default, Return> & import("./Observable").OnSignature<import("./ObjectEventType").Types | "change:geometry", import("./Object").ObjectEvent, Return> & import("./Observable").CombinedOnSignature<import("./Observable").EventTypes | import("./ObjectEventType").Types | "change:geometry", Return>;
+export type FeatureOnSignature<Return> = import("./Observable.js").OnSignature<import("./Observable.js").EventTypes, import("./events/Event.js").default, Return> & import("./Observable.js").OnSignature<import("./ObjectEventType.js").Types | "change:geometry", import("./Object.js").ObjectEvent, Return> & import("./Observable.js").CombinedOnSignature<import("./Observable.js").EventTypes | import("./ObjectEventType.js").Types | "change:geometry", Return>;
 /**
  * *
  */
@@ -95,11 +95,11 @@ declare class Feature<Geometry extends import("./geom/Geometry.js").default = im
     /***
      * @type {FeatureOnSignature<import("./events").EventsKey>}
      */
-    on: FeatureOnSignature<import("./events").EventsKey>;
+    on: FeatureOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {FeatureOnSignature<import("./events").EventsKey>}
      */
-    once: FeatureOnSignature<import("./events").EventsKey>;
+    once: FeatureOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {FeatureOnSignature<void>}
      */

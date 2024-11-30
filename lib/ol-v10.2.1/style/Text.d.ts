@@ -104,7 +104,7 @@ export type Options = {
     /**
      * Declutter mode: `declutter`, `obstacle`, `none`
      */
-    declutterMode?: import("../style/Style.js").DeclutterMode | undefined;
+    declutterMode?: import("./Style.js").DeclutterMode | undefined;
 };
 /**
  * @typedef {Object} Options

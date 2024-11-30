@@ -376,11 +376,11 @@ export type ViewStateLayerStateExtent = {
      */
     layerStatesArray?: import("./layer/Layer.js").State[] | undefined;
 };
-export type ViewObjectEventTypes = import("./ObjectEventType").Types | "change:center" | "change:resolution" | "change:rotation";
+export type ViewObjectEventTypes = import("./ObjectEventType.js").Types | "change:center" | "change:resolution" | "change:rotation";
 /**
  * *
  */
-export type ViewOnSignature<Return> = import("./Observable").OnSignature<import("./Observable").EventTypes, import("./events/Event.js").default, Return> & import("./Observable").OnSignature<ViewObjectEventTypes, import("./Object").ObjectEvent, Return> & import("./Observable").CombinedOnSignature<import("./Observable").EventTypes | ViewObjectEventTypes, Return>;
+export type ViewOnSignature<Return> = import("./Observable.js").OnSignature<import("./Observable.js").EventTypes, import("./events/Event.js").default, Return> & import("./Observable.js").OnSignature<ViewObjectEventTypes, import("./Object.js").ObjectEvent, Return> & import("./Observable.js").CombinedOnSignature<import("./Observable.js").EventTypes | ViewObjectEventTypes, Return>;
 /**
  * @typedef {import("./ObjectEventType").Types|'change:center'|'change:resolution'|'change:rotation'} ViewObjectEventTypes
  */
@@ -470,11 +470,11 @@ declare class View extends BaseObject {
     /***
      * @type {ViewOnSignature<import("./events").EventsKey>}
      */
-    on: ViewOnSignature<import("./events").EventsKey>;
+    on: ViewOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {ViewOnSignature<import("./events").EventsKey>}
      */
-    once: ViewOnSignature<import("./events").EventsKey>;
+    once: ViewOnSignature<import("./events.js").EventsKey>;
     /***
      * @type {ViewOnSignature<void>}
      */
@@ -881,7 +881,7 @@ declare class View extends BaseObject {
      * @param {import("./geom/SimpleGeometry.js").default} geometry The geometry.
      * @return {import("./extent").Extent} The rotated extent for the geometry.
      */
-    rotatedExtentForGeometry(geometry: import("./geom/SimpleGeometry.js").default): import("./extent").Extent;
+    rotatedExtentForGeometry(geometry: import("./geom/SimpleGeometry.js").default): import("./extent.js").Extent;
     /**
      * @param {import("./geom/SimpleGeometry.js").default} geometry The geometry.
      * @param {FitOptions} [options] Options.

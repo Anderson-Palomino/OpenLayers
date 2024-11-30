@@ -25,7 +25,7 @@ export type GroupEventType = "addlayer" | "removelayer";
 /**
  * *
  */
-export type GroupOnSignature<Return> = import("../Observable").OnSignature<import("../Observable").EventTypes, import("../events/Event.js").default, Return> & import("../Observable").OnSignature<import("./Base").BaseLayerObjectEventTypes | "change:layers", import("../Object").ObjectEvent, Return> & import("../Observable").CombinedOnSignature<import("../Observable").EventTypes | import("./Base").BaseLayerObjectEventTypes | "change:layers", Return>;
+export type GroupOnSignature<Return> = import("../Observable.js").OnSignature<import("../Observable.js").EventTypes, import("../events/Event.js").default, Return> & import("../Observable.js").OnSignature<import("./Base.js").BaseLayerObjectEventTypes | "change:layers", import("../Object.js").ObjectEvent, Return> & import("../Observable.js").CombinedOnSignature<import("../Observable.js").EventTypes | import("./Base.js").BaseLayerObjectEventTypes | "change:layers", Return>;
 export type Options = {
     /**
      * Opacity (0, 1).
@@ -96,11 +96,11 @@ declare class LayerGroup extends BaseLayer {
     /***
      * @type {GroupOnSignature<import("../events").EventsKey>}
      */
-    on: GroupOnSignature<import("../events").EventsKey>;
+    on: GroupOnSignature<import("../events.js").EventsKey>;
     /***
      * @type {GroupOnSignature<import("../events").EventsKey>}
      */
-    once: GroupOnSignature<import("../events").EventsKey>;
+    once: GroupOnSignature<import("../events.js").EventsKey>;
     /***
      * @type {GroupOnSignature<void>}
      */

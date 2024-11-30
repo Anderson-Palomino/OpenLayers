@@ -23,7 +23,7 @@ export type Options = {
     /**
      * Declutter mode: `declutter`, `obstacle`, `none`.
      */
-    declutterMode: import("../style/Style.js").DeclutterMode;
+    declutterMode: import("./Style.js").DeclutterMode;
 };
 /**
  * @typedef {Object} Options
