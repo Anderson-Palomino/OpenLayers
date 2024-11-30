@@ -93,6 +93,7 @@ const map = new ol.Map({
 });
 
 
+
 geolocation.setProjection(map.getView().getProjection());
 configurarEventos(map);
 
@@ -100,8 +101,7 @@ configurarEventos(map);
 
 map.addControl(new PosicionActual(geolocation));
 
+
 export {map};
-
-
 
 // console.log(map.getView().getProjection());
