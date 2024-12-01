@@ -1,26 +1,57 @@
-
 import RotacionNorte from "./RotacionNorte.js";
-import estilos from './Estilos.js';
+import estilos from "./Estilos.js";
 import PosicionActual from "./PosicionActual.js";
 import { geolocation, configurarEventos } from "./GeoLocation.js";
 
-
 const map = new ol.Map({
-  controls: ol.control.defaults.defaults({
-    zoom: true,
-    zoomOptions: { zoomInTipLabel: "Acercar", zoomOutTipLabel: "Alejar" },
-  }).extend([new RotacionNorte()]),
+  controls: ol.control.defaults
+    .defaults({
+      zoom: true,
+      zoomOptions: { zoomInTipLabel: "Acercar", zoomOutTipLabel: "Alejar" },
+    })
+    .extend([new RotacionNorte()]),
   // controls: ol.control.defaults.defaults().extend([new RotacionNorte()]),
   target: "map",
   layers: [
     new ol.layer.Tile({
-      // source: new ol.source.OSM(),
-      source: new ol.source.XYZ({
-        url: "http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
-        attributions: "Google Inc.",
-        attributionsCollapsible: false,
-      }),
+      source: new ol.source.OSM(),
+      title: "Open Street Map",
+      baseLayer: true,
+      visible: false,
+      //source: new ol.source.XYZ({
+      //url: "http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
+      //title:"Google Road",
+      //attributions: "Google Inc.",
+      //attributionsCollapsible: false,
+      //}),
     }),
+
+    new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: "http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+      }),
+      title: "Google Satellite",
+      baseLayer: true,
+      visible: false,
+    }),
+
+    new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: "http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+      }),
+      title: "Google Hybrid",
+      baseLayer: true,
+    }),
+
+    new ol.layer.Tile({
+      source: new ol.source.XYZ({
+        url: "http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
+      }),
+      title: "Google Terrain",
+      baseLayer: true,
+      visible: false,
+    }),
+
     new ol.layer.Vector({
       source: new ol.source.Vector({
         url: "data/ANP.geojson",
@@ -81,6 +112,9 @@ const map = new ol.Map({
       //   }),
       // }),
       style: estilos,
+      title: "Áreas Naturales Protegidas",
+      baseLayer: false,
+      visible: true,
     }),
   ],
   view: new ol.View({
@@ -92,17 +126,38 @@ const map = new ol.Map({
   }),
 });
 
-const layerSwitcher = new ol.control.LayerSwitcher();
+const layerSwitcher = new ol.control.LayerSwitcher({
+  mouseover: true,
+  trash: true,
+  show_progress: true,
+  oninfo: function (l) {
+    console.log(l.get("title"));
+  },
+});
+
+layerSwitcher.on("drawlist", function (e) {
+  console.log(e);
+
+  const layer = e.layer;
+
+  // Crear el botón y agregar funcionalidad de clic
+  $('<div>')
+    .text("?")
+    .on("click", function () {
+      console.log(layer.get("title"));
+    })
+    .appendTo($(".ol-layerswitcher-buttons", e.li));
+});
+
+layerSwitcher.setHeader("<b>Capas</b>");
+
 map.addControl(layerSwitcher);
 
 geolocation.setProjection(map.getView().getProjection());
 configurarEventos(map);
 
-
-
 map.addControl(new PosicionActual(geolocation));
 
-
-export {map};
+export { map };
 
 // console.log(map.getView().getProjection());

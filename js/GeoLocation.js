@@ -24,6 +24,7 @@ const geolocation = new ol.Geolocation({
     source: new ol.source.Vector({
       features: [posicionFeature, exactitudFeature],
     }),
+    displayInLayerSwitcher: false,
   });
   
   function configurarEventos(map) {
