@@ -57,6 +57,16 @@ const map = new ol.Map({
         url: "data/ANP.geojson",
         format: new ol.format.GeoJSON(),
       }),
+      
+      title:"Areas Naturales Protegidas",
+      style: estilos,
+    }),
+
+    new ol.layer.Vector({
+      source: new ol.source.Vector({
+        url: "data/features.json",
+        format: new ol.format.GeoJSON(),
+      }),
       // style: new ol.style.Style({
       //   stroke: new ol.style.Stroke({
       //     color: "orange",
@@ -112,7 +122,7 @@ const map = new ol.Map({
       //   }),
       // }),
       style: estilos,
-      title: "Áreas Naturales Protegidas",
+      title: "Features",
       baseLayer: false,
       visible: true,
     }),
