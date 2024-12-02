@@ -49,14 +49,22 @@ function estilos(feature) {
   const stlMultiPoligono = new ol.style.Style({
     stroke: new ol.style.Stroke({
       color: "#ff0000",
-      width: 5,
+      width: 3,
     }),
     fill: new ol.style.Fill({
       color: "rgba(255, 0, 0, 0.1)",
     }),
     text: new ol.style.Text({
-      // text: nomef,
       text: anpnomb,
+      font:"bold 12px Arial",
+      offsetY: 20,
+      stroke: new ol.style.Stroke({
+        color: "white",
+        width: 2,
+      }),
+      fill: new ol.style.Fill({
+        color: "black",
+      }),
     }),
   });
 
