@@ -1,7 +1,8 @@
 import RotacionNorte from "./RotacionNorte.js";
-import estilos from "./Estilos.js";
+import { getStlEcosistemas, estilos } from "./Estilos.js";
 import PosicionActual from "./PosicionActual.js";
 import { geolocation, configurarEventos } from "./GeoLocation.js";
+import { baseLayer } from "./CapasBase.js";
 
 const map = new ol.Map({
   controls: ol.control.defaults
@@ -13,45 +14,7 @@ const map = new ol.Map({
   // controls: ol.control.defaults.defaults().extend([new RotacionNorte()]),
   target: "map",
   layers: [
-    new ol.layer.Tile({
-      source: new ol.source.OSM(),
-      title: "Open Street Map",
-      baseLayer: true,
-      visible: false,
-      //source: new ol.source.XYZ({
-      //url: "http://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}",
-      //title:"Google Road",
-      //attributions: "Google Inc.",
-      //attributionsCollapsible: false,
-      //}),
-    }),
-
-    new ol.layer.Tile({
-      source: new ol.source.XYZ({
-        url: "http://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-      }),
-      title: "Google Satellite",
-      baseLayer: true,
-      visible: false,
-    }),
-
-    new ol.layer.Tile({
-      source: new ol.source.XYZ({
-        url: "http://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
-      }),
-      title: "Google Hybrid",
-      baseLayer: true,
-    }),
-
-    new ol.layer.Tile({
-      source: new ol.source.XYZ({
-        url: "http://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}",
-      }),
-      title: "Google Terrain",
-      baseLayer: true,
-      visible: false,
-    }),
-
+    baseLayer,
     new ol.layer.Vector({
       source: new ol.source.Vector({
         url: "data/ANP.geojson",
@@ -68,7 +31,7 @@ const map = new ol.Map({
         format: new ol.format.GeoJSON(),
       }),
       title:"Ecosistemas",
-      style: estilos,
+      style: getStlEcosistemas,
     }),
 
     new ol.layer.Vector({
@@ -177,6 +140,5 @@ configurarEventos(map);
 
 map.addControl(new PosicionActual(geolocation));
 
-export { map };
 
-// console.log(map.getView().getProjection());
+export { map };

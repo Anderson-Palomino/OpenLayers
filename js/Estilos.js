@@ -46,6 +46,8 @@ function estilos(feature) {
     }),
   });
 
+  
+
   const stlMultiPoligono = new ol.style.Style({
     stroke: new ol.style.Stroke({
       color: "#ff0000",
@@ -58,6 +60,7 @@ function estilos(feature) {
       text: anpnomb,
       font:"bold 12px Arial",
       offsetY: 20,
+      scale: 1.5,
       stroke: new ol.style.Stroke({
         color: "white",
         width: 2,
@@ -87,5 +90,32 @@ function estilos(feature) {
   return stl;
 }
 
+function getStlEcosistemas(feature){
+  console.log(feature, feature.get("NOMEF"));
+  const stlEcosistemas = new ol.style.Style({
+    fill: new ol.style.Fill({
+      color: "rgba(0, 0, 255, 0.1)",
+      width:2,
+    }),
+    stroke: new ol.style.Stroke({
+      color: "blue",
+      width: 2,
+    }),
+    text: new ol.style.Text({
+      text: feature.get("NOMEF"),
+      offsetY: 20,
+      scale: 1.5,
+      stroke: new ol.style.Stroke({
+        color: "blue",
+        width: 4,
+      }),
+      fill: new ol.style.Fill({
+        color: "white",
+      }),
+    }),
+  })
+  return stlEcosistemas;
+}
+
 // Exporta la función
-export default estilos;
+export { getStlEcosistemas, estilos };
