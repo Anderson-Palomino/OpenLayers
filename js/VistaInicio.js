@@ -3,6 +3,7 @@ import { getStlEcosistemas, estilos } from "./Estilos.js";
 import PosicionActual from "./PosicionActual.js";
 import { geolocation, configurarEventos } from "./GeoLocation.js";
 import { baseLayer } from "./CapasBase.js";
+import { srcEcosistemas, control_busqueda,i_select } from "./ControlBusqueda.js";
 
 const map = new ol.Map({
   controls: ol.control.defaults
@@ -26,10 +27,7 @@ const map = new ol.Map({
     }),
 
     new ol.layer.Vector({
-      source: new ol.source.Vector({
-        url:"data/ecosistemas.geojson",
-        format: new ol.format.GeoJSON(),
-      }),
+      source: srcEcosistemas,
       title:"Ecosistemas",
       style: getStlEcosistemas,
     }),
@@ -139,6 +137,17 @@ geolocation.setProjection(map.getView().getProjection());
 configurarEventos(map);
 
 map.addControl(new PosicionActual(geolocation));
+map.addControl(control_busqueda);
+map.addInteraction(i_select);
+
+control_busqueda.on("select", function (e) {
+  console.log(e);
+  i_select.getFeatures().clear();
+  i_select.getFeatures().push(e.search);
+
+  const p = e.search.getGeometry().getFirstCoordinate();
+  map.getView().animate({zoom:15,center:p});
+});
 
 
 export { map };
